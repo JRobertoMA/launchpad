@@ -1,0 +1,17 @@
+# Protect sensitive files from direct web access
+Options -Indexes
+
+<Files "config.php">
+    Require all denied
+</Files>
+
+<Files "services.json">
+    Require all denied
+</Files>
+
+# Copia de referencia con las URLs reales; nada la carga, no debe servirse
+<Files "services.js">
+    Require all denied
+</Files>
+
+# .git/, dotfiles, *.json, *.md y *.example ya los niega el vhost (config/apache/000-default.conf)

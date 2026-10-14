@@ -1,0 +1,108 @@
+/* Paleta y componentes de consola compartidos por index.php y admin/index.php.
+   Requiere Bootstrap 5.3 cargado antes y <html data-bs-theme="dark">. */
+
+:root, [data-bs-theme="dark"] {
+  --console-fg: #33ff33;
+  --console-bright: #a6ffa6;
+  --console-dim: #28a428;          /* ≥ 4.5:1 sobre --console-panel (WCAG AA) */
+  --console-line: #145214;
+  --console-panel: #001500;
+  --console-panel-2: #001a00;
+  --console-warn: #ffb000;
+  --console-crit: #ff5555;
+  --console-crit-line: #5a1414;
+  --console-crit-panel: #1a0000;
+
+  --bs-body-bg: #000000;
+  --bs-body-color: var(--console-fg);
+  --bs-border-color: var(--console-line);
+  --bs-card-bg: var(--console-panel);
+  --bs-card-border-color: var(--console-line);
+  --bs-link-color: var(--console-fg);
+  --bs-link-color-rgb: 51, 255, 51;
+  --bs-link-hover-color: var(--console-bright);
+  --bs-link-hover-color-rgb: 166, 255, 166;
+  --bs-secondary-color: var(--console-dim);
+  --bs-tertiary-bg: var(--console-panel-2);
+  --bs-emphasis-color: var(--console-bright);
+}
+
+body {
+  font-family: ui-monospace, SFMono-Regular, "Courier New", monospace;
+  background-image: repeating-linear-gradient(0deg, rgba(51,255,51,0.02) 0px, rgba(51,255,51,0.02) 1px, transparent 1px, transparent 2px);
+}
+a { text-decoration: none; }
+::selection { background: var(--console-line); color: var(--console-bright); }
+hr { border-color: var(--console-line); opacity: 1; }
+
+/* ── Texto ── */
+.text-console-dim { color: var(--console-dim); }
+.text-console-err { color: var(--console-crit); }
+.boot-block { border-left: 2px solid var(--console-line); padding-left: 1rem; }
+
+/* ── Tarjetas ── */
+.card { transition: box-shadow .15s ease, border-color .15s ease; }
+.card:hover, .card:focus-within { border-color: var(--console-fg); box-shadow: 0 0 10px rgba(51,255,51,.35); }
+
+.badge-console {
+  background: var(--console-panel-2); color: var(--console-fg); border: 1px solid var(--console-line);
+  font-weight: 500; letter-spacing: .5px;
+}
+
+/* ── Botones ── */
+.btn-console {
+  background: var(--console-panel-2); color: var(--console-fg); border: 1px solid var(--console-line);
+  letter-spacing: .5px;
+}
+.btn-console:hover, .btn-console:focus-visible, .btn-console:active {
+  background: var(--console-line) !important; color: var(--console-bright) !important; border-color: var(--console-fg) !important;
+}
+.btn-console:disabled, .btn-console.disabled {
+  background: var(--console-panel-2); color: var(--console-dim); border-color: var(--console-line); opacity: .6;
+}
+/* Acción preferida: relleno */
+.btn-console-primary {
+  background: var(--console-fg); color: #000; border: 1px solid var(--console-fg);
+  letter-spacing: .5px; font-weight: 600;
+}
+.btn-console-primary:hover, .btn-console-primary:focus-visible, .btn-console-primary:active {
+  background: var(--console-bright) !important; color: #000 !important; border-color: var(--console-bright) !important;
+}
+.btn-console-danger {
+  background: var(--console-crit-panel); color: var(--console-crit); border: 1px solid var(--console-crit-line);
+  letter-spacing: .5px;
+}
+.btn-console-danger:hover, .btn-console-danger:focus-visible, .btn-console-danger:active {
+  background: var(--console-crit-line) !important; color: #ffaaaa !important; border-color: var(--console-crit) !important;
+}
+.btn-link-console {
+  background: none; border: 0; padding: 0; color: var(--console-fg); font: inherit;
+}
+.btn-link-console:hover { color: var(--console-bright); }
+
+/* ── Formularios ── */
+.form-control-console, .form-select-console {
+  background-color: var(--console-panel); color: var(--console-fg); border: 1px solid var(--console-line);
+}
+.form-control-console:focus, .form-select-console:focus {
+  background-color: var(--console-panel); color: var(--console-fg); border-color: var(--console-fg);
+  box-shadow: 0 0 0 .2rem rgba(51,255,51,.25);
+}
+.form-control-console::placeholder { color: var(--console-dim); }
+.form-control-console.is-invalid, .form-control-console.is-invalid:focus {
+  border-color: var(--console-crit); background-image: none; padding-right: .75rem;
+  box-shadow: 0 0 0 .2rem rgba(255,85,85,.25);
+}
+.invalid-feedback { color: var(--console-crit); }
+.form-label {
+  font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--console-dim); margin-bottom: .25rem;
+}
+
+/* ── Accesibilidad ── */
+a:focus-visible, button:focus-visible, .btn:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--console-fg); outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .btn { transition: none; }
+}

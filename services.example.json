@@ -1,0 +1,26 @@
+[
+    {
+        "id": "jellyfin",
+        "name": "Jellyfin",
+        "tag": "media/streaming",
+        "glyph": "JF",
+        "local": "http://192.168.1.10:8096",
+        "global": "https://jellyfin.example.com"
+    },
+    {
+        "id": "immich",
+        "name": "Immich",
+        "tag": "media/fotos",
+        "glyph": "IM",
+        "local": "http://192.168.1.10:2283",
+        "global": ""
+    },
+    {
+        "id": "portainer",
+        "name": "Portainer",
+        "tag": "infra/docker",
+        "glyph": "PT",
+        "local": "https://192.168.1.10:9443",
+        "global": ""
+    }
+]
